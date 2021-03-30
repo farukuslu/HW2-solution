@@ -1,11 +1,8 @@
-import pandas
+# import pandas
 
-def model(bonds_hist, ivv_hist):
+def model_trd(bonds_hist, ivv_hist):
 
-
-
-
-    from hw2_utils import *
+    # from hw2_utils import *
     # from sklearn import linear_model
     # from sklearn.metrics import r2_score
     # from pandas import *
@@ -45,3 +42,4 @@ def model(bonds_hist, ivv_hist):
     bonds_features.set_index(list(range(0, len(bonds_features) - 1)))
 
     return bonds_features.to_json()
+

@@ -198,3 +198,4 @@ def fetch_GSPC_data(start_date, end_date):
     df.Date = pd.to_datetime(df.Date)
 
     return df
+
