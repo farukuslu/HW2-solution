@@ -6,16 +6,16 @@ def model(bonds_hist, ivv_hist):
 
 
     from hw2_utils import *
-    from sklearn import linear_model
-    from sklearn.metrics import r2_score
-    from pandas import *
-    import pickle
+    # from sklearn import linear_model
+    # from sklearn.metrics import r2_score
+    # from pandas import *
+    # import pickle
 
     # pickle.dump(bonds_hist, open("bonds_hist.p", "wb"))
     # pickle.dump(ivv_hist, open("ivv_hist.p", "wb"))
 
-    bonds_hist = read_json(pickle.load(open("bonds_hist.p", "rb")))
-    ivv_hist = read_json(pickle.load(open("ivv_hist.p", "rb")))
+    # bonds_hist = read_json(pickle.load(open("bonds_hist.p", "rb")))
+    # ivv_hist = read_json(pickle.load(open("ivv_hist.p", "rb")))
 
     def bonds_fun(yields_row):
         maturities = DataFrame([1 / 12, 2 / 12, 3 / 12, 6 / 12, 1, 2])
