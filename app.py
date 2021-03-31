@@ -6,7 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from hw2_utils import *
 from datetime import date
-# from model import model
+from model import model
 
 # 4) Create a Dash app
 app = dash.Dash(__name__)
@@ -31,6 +31,8 @@ app.layout = html.Div([
     html.Button("UPDATE", id='update-hist-dta-button', n_clicks = 0),
     # Hidden div inside the app that stores bonds rates data
     html.Div(id='bonds-historical-data', style={'display': 'none'}),
+    dcc.Input(id="exit-position-n", type="number", debounce=True, value=5),
+    dcc.Input(id="alpha", type="number", debounce=True, value=0.02),
     dcc.Graph(id='bonds-3d-graph', style={'display': 'none'})
 ])
 
@@ -122,11 +124,13 @@ def update_historical_data(nclicks, bbg_id_1, start_date, end_date):
 @app.callback(
     dash.dependencies.Output('model-output', 'children'),
     [dash.dependencies.Input('bonds-historical-data', 'children'),
-    dash.dependencies.Input('ivv-historical-data', 'children')],
+     dash.dependencies.Input('ivv-historical-data', 'children'),
+     dash.dependencies.Input('exit-position-n', 'value'),
+     dash.dependencies.Input('alpha', 'value')],
     prevent_initial_call = True
 )
-def calculate_model(bonds, ivv):
-    model(bonds, ivv)
+def calculate_model(bonds, ivv, n, alpha):
+    return model(bonds, ivv, n, alpha)
 
 # Run it!
 if __name__ == '__main__':
