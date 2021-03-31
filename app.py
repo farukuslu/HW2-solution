@@ -6,7 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from hw2_utils import *
 from datetime import date
-from model import model
+# from model import model
 
 # 4) Create a Dash app
 app = dash.Dash(__name__)
@@ -45,12 +45,14 @@ app.layout = html.Div([
 )
 def update_bonds_data(n_clicks, startDate, endDate):
     # from hw2_utils import *
-    # startDate = "2021-03-26"
+    # startDate = "2019-03-26"
     # endDate = "2021-03-30"
 
     data_years = list(
         range(pd.to_datetime(startDate).date().year,
-                           pd.to_datetime(endDate).date().year + 1, 1))
+                           pd.to_datetime(endDate).date().year + 1, 1)
+    )
+
 
     bonds_data = fetch_usdt_rates(data_years[0])
 
@@ -59,6 +61,7 @@ def update_bonds_data(n_clicks, startDate, endDate):
             bonds_data = pd.concat([bonds_data, fetch_usdt_rates(year)],
                                     axis = 0, ignore_index=True)
 
+    # How to filter a dataframe for rows that you want
     bonds_data = bonds_data[bonds_data.Date >= pd.to_datetime(startDate)]
     bonds_data = bonds_data[bonds_data.Date <= pd.to_datetime(endDate)]
 
@@ -75,6 +78,7 @@ def update_bonds_data(n_clicks, startDate, endDate):
             )
         ]
     )
+
 
     fig.update_layout(
         scene=dict(

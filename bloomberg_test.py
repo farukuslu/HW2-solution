@@ -1,7 +1,6 @@
 # SimpleHistoryExample.py
 from hw2_utils import *
 
-
 def main():
     options = parseCmdLine()
 
