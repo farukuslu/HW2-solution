@@ -6,7 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from hw2_utils import *
 from datetime import date
-from model import model
+from model import *
 
 # 4) Create a Dash app
 app = dash.Dash(__name__)
@@ -129,8 +129,8 @@ def update_historical_data(nclicks, bbg_id_1, start_date, end_date):
      dash.dependencies.Input('alpha', 'value')],
     prevent_initial_call = True
 )
-def calculate_model(bonds, ivv, n, alpha):
-    return model(bonds, ivv, n, alpha)
+def calculate_model_data(bonds, ivv, n, alpha):
+    return model_data(bonds, ivv, n, alpha)
 
 # Run it!
 if __name__ == '__main__':

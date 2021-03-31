@@ -1,8 +1,8 @@
 from sklearn import linear_model
 from sklearn.metrics import r2_score
-from hw2_utils import *
+import pandas as pd
 
-def model(bonds_hist, ivv_hist, n, alpha):
+def model_data(bonds_hist, ivv_hist, n, alpha):
 
 ###### For teaching & debugging ################################################
 # ------------------------------------------------------------------------------
